@@ -84,6 +84,7 @@ public class menu {
                     File.saveData();
                     break;
                 case 13:
+                    File.saveDataSilentlyIfDirty();
                     System.out.println("Exiting program...");
                     break;
 

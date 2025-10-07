@@ -21,6 +21,7 @@ import model.Car;
 public class CarManager {
     public static final Scanner sc = new Scanner(System.in);
     public static ArrayList<Car> carList = new ArrayList<>();
+    public static boolean carListModified = false;
     
     public static Car datatoObjectCar(String input){
         try{
@@ -58,6 +59,7 @@ public class CarManager {
         }catch(IOException e){
             
         }
+        carListModified = false; // freshly loaded from disk
         
     }
     
@@ -117,6 +119,7 @@ brand names; if same brand, sort by price descending.
         String engineId = Input.inputEngineId();
         
         carList.add(new Car( carId, brandId, color, frameId, engineId));
+        carListModified = true;
     }
     
     //Function 9: Remove a car by ID:
@@ -141,6 +144,7 @@ brand names; if same brand, sort by price descending.
             if(answer.equalsIgnoreCase("Y")){
                 carList.remove(carSearched);
                 System.out.println("Remove successfully!");
+                carListModified = true;
             }else if(answer.equalsIgnoreCase("N")){
                 System.out.println("Cancel Remove Process!");
             }
@@ -173,6 +177,7 @@ brand names; if same brand, sort by price descending.
             }else{
                 carUpdate.setColor(newColor);
                 System.out.println("update new color successfully");
+                carListModified = true;
                 break;
             }
         }
@@ -190,6 +195,7 @@ brand names; if same brand, sort by price descending.
                 }else{
                     carUpdate.setFrameId(newFrameId);
                     System.out.println("Update FrameId successfully!");
+                    carListModified = true;
                     break;
                 }
             }
@@ -207,6 +213,7 @@ brand names; if same brand, sort by price descending.
                 }else{
                     carUpdate.setEngineId(newEngineId);
                     System.out.println("Update EngineId successfully!");
+                    carListModified = true;
                     break;
                 }
             }

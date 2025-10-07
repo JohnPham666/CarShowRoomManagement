@@ -5,8 +5,10 @@
 package FileHandle;
 
 import static Collections.BrandManager.brandList;
+import static Collections.BrandManager.brandListModified;
 import Collections.CarManager;
 import static Collections.CarManager.carList;
+import static Collections.CarManager.carListModified;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -36,6 +38,19 @@ public class File {
         writeCarsToFile("src/data/cars.txt");
 
         System.out.println("All changes have been saved successfully.");
+        brandListModified = false;
+        carListModified = false;
+    }
+
+    public static void saveDataSilentlyIfDirty() throws IOException {
+        if (!brandListModified && !carListModified) {
+            return; // nothing to do
+        }
+        writeBrandsToFile("src/data/brands.txt");
+        writeCarsToFile("src/data/cars.txt");
+        brandListModified = false;
+        carListModified = false;
+        System.out.println("Changes detected. Data saved before exit.");
     }
 
     private static void writeBrandsToFile(String path) throws IOException {
