@@ -53,6 +53,13 @@ public class File {
         System.out.println("Changes detected. Data saved before exit.");
     }
 
+    public static void saveDataWithoutPrompt() throws IOException {
+        writeBrandsToFile("src/data/brands.txt");
+        writeCarsToFile("src/data/cars.txt");
+        brandListModified = false;
+        carListModified = false;
+    }
+
     private static void writeBrandsToFile(String path) throws IOException {
         try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(path)))) {
             for (Brand brand : brandList) {
