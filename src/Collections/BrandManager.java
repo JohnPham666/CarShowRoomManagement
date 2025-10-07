@@ -241,7 +241,7 @@ public class BrandManager {
                 return b;
             }
         }
-        return null;
+        return null; 
     }
 }
 
