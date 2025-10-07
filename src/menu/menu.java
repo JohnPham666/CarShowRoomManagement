@@ -7,6 +7,7 @@ package menu;
 import Collections.BrandManager;
 import Collections.CarManager;
 import java.io.IOException;
+import FileHandle.File;
 import java.util.Scanner;
 
 /**
@@ -80,9 +81,10 @@ public class menu {
                     CarManager.ListCarsByColor();
                     break;
                 case 12:
-                   
+                    File.saveData();
+                    break;
                 case 13:
-                    System.out.println("Exiting program...");
+                    File.handleQuit();
                     break;
 
                 default:
