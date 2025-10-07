@@ -80,9 +80,11 @@ public class menu {
                     CarManager.ListCarsByColor();
                     break;
                 case 12:
-                   
+                   FileHandle.File.saveData();
+                   break;
                 case 13:
                     System.out.println("Exiting program...");
+                    FileHandle.File.handleQuit();
                     break;
 
                 default:

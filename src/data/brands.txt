@@ -5,7 +5,7 @@ B7-PE, BMW 730Li Pure Excellence, Harman Kardon: 4.929B
 B5-18, BMW 530i (2018), Alpine: 2.599B
 B7019, BMW 530i (2019), Alpine: 2.729B
 BX4-18, BMW X4 xDrive20i (2018), Sony: 2.799B
-BX4-18, BMW X4 xDrive20i (2018) duplicate test, AXZ: 5.97B
+BX4-18, BMW X4 xDrive20i (2018) duplicate test, AXZ: 5.970B
 BX4-17, BMW X4 xDrive20i (2019), Sony: 2.899B
 B3-GT18, BMW 320i GT (2018), Bose: 1.799B
 B3-S19, BMW 320i Sportline (2019), Bose: 1.899B

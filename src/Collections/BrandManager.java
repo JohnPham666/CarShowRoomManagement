@@ -16,7 +16,7 @@ import model.Brand;
  * @author admin
  */
 public class BrandManager {
-
+    public static boolean brandListChange = false;
     public static ArrayList<Brand> brandList = new ArrayList<>();
 
     public static Brand dataToObjectBrand(String text) {
@@ -42,6 +42,7 @@ public class BrandManager {
             }
         } catch (Exception e) {
         }
+        brandListChange=false;//Load data from file
         return null;
     }
 
@@ -86,7 +87,7 @@ public class BrandManager {
         double price = io.Input.inputBrandPrice();
 
         brandList.add(new Brand(id, name, sound, price));
-
+        brandListChange=true;
     }
 
     //Function 3 : Search brand by ID
@@ -153,6 +154,7 @@ public class BrandManager {
                 break;
             } else if (io.Validation.isValidName(newName) == true) {
                 brand.setName(newName);
+                brandListChange=true;
                 break;
             } else {
                 System.out.println("Invalid Name, please try again");
@@ -169,6 +171,7 @@ public class BrandManager {
                 break;
             } else if (io.Validation.isValidSound(newSound)) {
                 brand.setSound(newSound);
+                        brandListChange=true;
                 break;
             } else {
                 System.out.println("Invalid sound, please try again");
@@ -185,6 +188,7 @@ public class BrandManager {
                 break;
             } else if (io.Validation.isValidPriceFormat(newPrice) && newPriceDouble > 0) {
                 brand.setPrice(newPriceDouble);
+                brandListChange=true;
                 break;
             } else {
                 System.out.println("Invalid Price, please try again!");
