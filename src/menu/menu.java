@@ -84,19 +84,7 @@ public class menu {
                     File.saveData();
                     break;
                 case 13:
-                    if (Collections.BrandManager.brandListModified || Collections.CarManager.carListModified) {
-                        System.out.print("Unsaved changes detected. Save before exit? (Y/N): ");
-                        String ans = sc.nextLine().trim();
-                        if (ans.equalsIgnoreCase("Y")) {
-                            File.saveDataWithoutPrompt();
-                            System.out.println("Saved successfully. Exiting program...");
-                        } else {
-                            System.out.println("Exiting without saving...");
-                        }
-                    } else {
-                        // Already saved; exit silently
-                    }
-                    System.out.println("Exiting program...");
+                    File.handleQuit();
                     break;
 
                 default:

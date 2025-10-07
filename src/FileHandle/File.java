@@ -60,6 +60,18 @@ public class File {
         carListModified = false;
     }
 
+    public static void handleQuit() throws IOException {
+        if (brandListModified || carListModified) {
+            Scanner sc = new Scanner(System.in);
+            System.out.print("Unsaved changes detected. Save before exit? (Y/N): ");
+            String ans = sc.nextLine().trim();
+            if (ans.equalsIgnoreCase("Y")) {
+                saveDataWithoutPrompt();
+            }
+        }
+        // If no changes or user chose not to save, exit silently (no extra prints)
+    }
+
     private static void writeBrandsToFile(String path) throws IOException {
         try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(path)))) {
             for (Brand brand : brandList) {
