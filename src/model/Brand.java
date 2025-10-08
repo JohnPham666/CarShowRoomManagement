@@ -58,7 +58,7 @@ public class Brand {
 
     @Override
     public String toString() {
-return String.format("│ %-10s │ %-40s │ %-20s │  %20.3fB │", 
+return String.format("│ %-10s │ %-40s │ %-20s │ %20.3fB │", 
                               id,name,sound, price);    
     
     }

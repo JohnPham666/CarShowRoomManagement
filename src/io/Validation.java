@@ -62,11 +62,7 @@ public class Validation {
         return price>0;
     }
     
-    public static String doubleToBillionsString(double price){
-        
-        double priceString = price/1000000000;
-         return String.format("%.3f", priceString).replaceAll("\\.?0+B$", "B");//Remove all unnecessary 0 and +B
-    }
+   
     
     //////////////////////////////////////////////////////////////////////////////////
     ///////////////////VALIDATION FOR CAR////////////////////////////////////////////
@@ -86,15 +82,6 @@ public class Validation {
             
         }
     
-    //Check brandId exist in the brand List
-    public static boolean brandIdExist(String id){
-        for(Brand brand: brandList){
-            if(!brand.getId().equalsIgnoreCase(id)){
-                return false;
-            }
-        }
-        return true;
-    }
     
     //Check color cannot be empty
     public static boolean isValidColor(String color){

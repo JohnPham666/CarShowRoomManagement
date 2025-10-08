@@ -17,7 +17,7 @@ public class Input {
         String id;
         do{
         System.out.println("Enter your new Brand ID: ");
-        id = sc.nextLine();
+        id = sc.nextLine().trim();
         
         if(!Validation.isValidId(id)){
             System.out.println("Brand id cannot be empty, please try again!!!");
@@ -130,7 +130,7 @@ public class Input {
             System.out.println("Enter Car Color: ");
             color = sc.nextLine().trim();
             if(!Validation.isValidColor(color)){
-                System.out.println("Color cannot be empt. Please try again");
+                System.out.println("Color cannot be empty. Please try again");
                 color =null;
             }else{
                 break;

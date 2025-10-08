@@ -16,6 +16,7 @@ import model.Brand;
  * @author admin
  */
 public class BrandManager {
+public static final Scanner sc = new Scanner(System.in);
     public static boolean brandListChange = false;
     public static ArrayList<Brand> brandList = new ArrayList<>();
 
@@ -42,7 +43,6 @@ public class BrandManager {
             }
         } catch (Exception e) {
         }
-        brandListChange=false;//Load data from file
         return null;
     }
 
@@ -62,6 +62,8 @@ public class BrandManager {
         } catch (IOException e) {
 
         }
+                brandListChange = false;//Load data from file
+
         return brandList;
 
     }
@@ -87,30 +89,30 @@ public class BrandManager {
         double price = io.Input.inputBrandPrice();
 
         brandList.add(new Brand(id, name, sound, price));
-        brandListChange=true;
+        brandListChange = true;
     }
 
     //Function 3 : Search brand by ID
     public static void searchBrandByID() {
         //User input id
         System.out.println("Enter ID: ");
-        Scanner sc = new Scanner(System.in);
         String id = sc.nextLine();
         //Compare id with brandID in the list
         boolean found = false;
         String idSearch;
+        System.out.println("-------------------------------------------------------------------------------------------------------");
+        System.out.println(String.format("│ %-10s │ %-40s │ %-20s │ %20s  │", "Brand Id", "Brand Name", "Sound", "Price"));
+        System.out.println("-------------------------------------------------------------------------------------------------------");
         for (Brand brand : brandList) {
             idSearch = brand.getId();
             if (idSearch.equalsIgnoreCase(id)) {
-                System.out.println("-------------------------------------------------------------------------------------------------------");
-                System.out.println(String.format("│ %-10s │ %-40s │ %-20s │ %20s  │", "Brand Id", "Brand Name", "Sound", "Price"));
-                System.out.println("-------------------------------------------------------------------------------------------------------");
+
                 System.out.println(brand);
-                System.out.println("-------------------------------------------------------------------------------------------------------");
 
                 found = true;
             }
         }
+        System.out.println("-------------------------------------------------------------------------------------------------------");
         if (found == false) {
             System.out.println("This brand does not exist!");
         }
@@ -130,7 +132,6 @@ public class BrandManager {
 
     //Function 4: Update brand by id
     public static void updateBrandById() {
-        Scanner sc = new Scanner(System.in);
         String id;
         Brand brand;
         while (true) {
@@ -154,7 +155,7 @@ public class BrandManager {
                 break;
             } else if (io.Validation.isValidName(newName) == true) {
                 brand.setName(newName);
-                brandListChange=true;
+                brandListChange = true;
                 break;
             } else {
                 System.out.println("Invalid Name, please try again");
@@ -171,7 +172,7 @@ public class BrandManager {
                 break;
             } else if (io.Validation.isValidSound(newSound)) {
                 brand.setSound(newSound);
-                        brandListChange=true;
+                brandListChange = true;
                 break;
             } else {
                 System.out.println("Invalid sound, please try again");
@@ -182,20 +183,25 @@ public class BrandManager {
         while (true) {
             System.out.println("Enter new brand price(B) or press 'Enter' to skip: ");
             String newPrice = sc.nextLine().trim();
-            double newPriceDouble = Double.parseDouble(newPrice);
             if (newPrice.isEmpty()) {
                 System.out.println("No changing price, keep current price");
                 break;
-            } else if (io.Validation.isValidPriceFormat(newPrice) && newPriceDouble > 0) {
-                brand.setPrice(newPriceDouble);
-                brandListChange=true;
-                break;
             } else {
-                System.out.println("Invalid Price, please try again!");
+
+                if (io.Validation.isValidPriceFormat(newPrice)) {
+                    double newPriceDouble = Double.parseDouble(newPrice);
+                    brand.setPrice(newPriceDouble);
+                    brandListChange = true;
+                    break;
+                } else {
+                    System.out.println("Invalid Price, please try again!");
+                }
+
             }
 
         }
         System.out.println("Update Brand successfully!");
+
     }
     //Finish Function 4
 
@@ -213,7 +219,6 @@ public class BrandManager {
 
     public static void listBrandByPrice() {
         ArrayList<Brand> listByPrice = new ArrayList<>();
-        Scanner sc = new Scanner(System.in);
         double priceInput;
         while (true) {
             System.out.println("Enter your Price: ");
@@ -237,15 +242,14 @@ public class BrandManager {
         }
     }
     //finish function 5
-    
+
     //Function return brand by Id
-    public static Brand returnBrandById(String id){
-        for(Brand b: brandList){
-            if(b.getId().equalsIgnoreCase(id)){
+    public static Brand returnBrandById(String id) {
+        for (Brand b : brandList) {
+            if (b.getId().equalsIgnoreCase(id)) {
                 return b;
             }
         }
-        return null; 
+        return null;
     }
 }
-

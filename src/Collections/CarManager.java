@@ -98,7 +98,7 @@ brand names; if same brand, sort by price descending.
     //Function 7:Search cars by partial brand name match
     public static void searchCarByPartialName() {
         ArrayList<Car> carListByPartialName = new ArrayList<>();
-        System.out.println("Input partial name of the cars: ");
+        System.out.println("Input partial name of the brands: ");
         String partialName = sc.nextLine().trim().toLowerCase();
         for (Brand b : brandList) {
             if (b.getName().toLowerCase().contains(partialName)) {
@@ -143,6 +143,12 @@ brand names; if same brand, sort by price descending.
         String id = sc.nextLine();
         Car carSearched = searchCarByCarId(id);
         if (carSearched != null) {
+            System.out.println("+---------------------------------------------------------------------+");
+            System.out.printf("| %-10s %-15s %-10s %-15s %-15s |\n",
+                    "Car ID", "Brand ID", "Color", "Frame ID", "Engine ID");
+            System.out.println("+---------------------------------------------------------------------+");
+            System.out.println(carSearched);
+            System.out.println("+---------------------------------------------------------------------+");
             System.out.println("Are you sure you want to delete Car " + carSearched.getCarId() + "?(Y/N)");
             String answer = sc.nextLine();
             if (answer.equalsIgnoreCase("Y")) {
@@ -193,7 +199,7 @@ brand names; if same brand, sort by price descending.
         while (true) {
             System.out.println("Update new FrameId or Press 'Enter' to keep current FrameId: ");
             String newFrameId = sc.nextLine().trim();
-            if (newFrameId == null) {
+            if (newFrameId.isEmpty()) {
                 System.out.println("No changing FrameId, keep current FrameId!");
                 break;
             } else {
@@ -212,7 +218,7 @@ brand names; if same brand, sort by price descending.
         while (true) {
             System.out.println("Update new EngineId or Press 'Enter' to keep current Engine: ");
             String newEngineId = sc.nextLine().trim();
-            if (newEngineId == null) {
+            if (newEngineId.isEmpty()) {
                 System.out.println("No changing EngineId, keep current EngineId!");
                 break;
             } else {
@@ -237,19 +243,6 @@ brand names; if same brand, sort by price descending.
         System.out.println("+---------------------------------------------------------------------+");
 
         for (Car car : list) {
-            System.out.println(car);
-        }
-        System.out.println("+---------------------------------------------------------------------+");
-
-    }
-
-    public static void displayAll() {
-        System.out.println("+---------------------------------------------------------------------+");
-        System.out.printf("| %-10s %-15s %-10s %-15s %-15s |\n",
-                "Car ID", "Brand ID", "Color", "Frame ID", "Engine ID");
-        System.out.println("+---------------------------------------------------------------------+");
-
-        for (Car car : carList) {
             System.out.println(car);
         }
         System.out.println("+---------------------------------------------------------------------+");
